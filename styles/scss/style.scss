@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+@use "sass:map"; //style.scssの一番上に書く
+
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  pc: "screen and (min-width: 1025px)",
+);
+
+@mixin mq($breakpoint: pc) {
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  color: #707070;
+  font-family: sans-serif;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #707070;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+.wrapper {
+  max-width: 1000px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+#header .logo {
+  max-width: 190px;
+  line-height: 0;
+}
+
+#header .logo a {
+  display: block;
+}
+
+#header .nav {
+  display: flex;
+  align-items: center;
+}
+
+#header .nav li {
+  font-size: 14px;
+  margin-left: 40px;
+}
+
+.mainvisual {
+  margin-bottom: 80px;
+}
+.introduction {
+  margin-bottom: 80px;
+  text-align: center;
+
+  .catchphrase {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+
+.section-title {
+  font-weight: normal;
+  margin-bottom: 40px;
+
+  .en {
+    display: block;
+    font-size: 40px;
+  }
+
+  .ja {
+    display: block;
+    font-size: 14px;
+  }
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 120px;
+
+  .img {
+    width: 50%;
+  }
+
+  .detail {
+    width: 50%;
+    padding-left: 80px;
+
+    p {
+      font-size: 14px;
+      line-height: 2;
+    }
+  }
+}
+
+#works {
+  margin-bottom: 60px;
+
+  .works-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      width: 32%;
+      margin: 0 2% 2% 0;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+#footer {
+  font-size: 12px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+@include mq(sp) {
+  #header {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  #header .logo {
+    max-width: 120px;
+  }
+
+  .mainvisual {
+    margin-bottom: 50px;
+  }
+
+  .introduction {
+    margin-bottom: 50px;
+
+    .catchphrase {
+      font-size: 16px;
+    }
+
+    .text {
+      text-align: left;
+    }
+  }
+
+  .section-title {
+    margin-bottom: 25px;
+
+    .en {
+      font-size: 32px;
+    }
+  }
+
+  #profile {
+    flex-direction: column-reverse;
+    margin-bottom: 60px;
+
+    .img {
+      width: 100%;
+    }
+
+    .detail {
+      width: 100%;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  #works {
+    margin-bottom: 30px;
+
+    .works-list {
+      flex-direction: column;
+
+      li {
+        width: 100%;
+        margin: 0 0 20px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
